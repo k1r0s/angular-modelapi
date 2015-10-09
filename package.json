@@ -7,5 +7,19 @@
     "start": "sudo node app.js"
   },
   "author": "ciroreed",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "sqlite3_mapper": "^1.0.1",
+    "express": "^4.13.3"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ciroreed/angular-modelapi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ciroreed/angular-modelapi/issues"
+  },
+  "homepage": "https://github.com/ciroreed/angular-modelapi#readme"
 }
