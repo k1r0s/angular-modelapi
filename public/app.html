@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="testapp">
+  <head>
+    <meta charset="utf-8">
+    <title>test angular models</title>
+  </head>
+  <body>
+    <div ng-controller="testapp$controller">
+      <button ng-show="!editing" ng-click="create()">Create</button>
+
+      <div ng-show="editing">
+        <input type="text" ng-model="tmp.name"/>
+        <input type="text" ng-model="tmp.surname"/>
+        <input type="text" ng-model="tmp.age"/>
+        <input type="text" ng-model="tmp.address"/>
+        <input type="text" ng-model="tmp.city"/>
+        <button ng-click="done(tmp.id)">Done</button>
+        <button ng-click="cancel()">Cancel</button>
+      </div>
+
+      <ul>
+        <li ng-repeat="(i, p) in personCollection">
+          <span>{{p.summary()}}</span>
+          <a href="#" ng-click="edit(i)">[edit]</a>
+          <a href="#" ng-click="delete(i)">x</a>
+        </li>
+      </ul>
+    </div>
+    <script src="ng/angular.min.js" charset="utf-8"></script>
+    <script src="js/ciroreed-angular-modelapi.js" charset="utf-8"></script>
+    <script src="js/app.js" charset="utf-8"></script>
+  </body>
+</html>
