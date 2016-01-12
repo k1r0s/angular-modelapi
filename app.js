@@ -2,7 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 var app = express();
-var mapper = require('sqlite3_mapper').dbpath('dbtest');
+var orm = require('sqlite3-orm');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -15,7 +16,7 @@ app.get('/', function(req, res){
     res.sendFile(__dirname + '/public/app.html');
 });
 app.get('/person', function(req, res){
-  mapper.read({entity: 'person', type: 'collection'}, function(arr){
+  orm.read({entity: 'person', type: 'collection'}, function(arr){
     res.json(arr);
   });
 });
@@ -23,18 +24,20 @@ app.get('/person/:idperson', function(req, res){
 
 });
 app.post('/person', function(req, res){
-  mapper.create({entity: 'person', subject: req.body}, function(){
+  orm.create({entity: 'person', subject: req.body}, function(){
     res.json({code: 0});
   });
 });
 app.put('/person/:idperson', function(req, res){
-  mapper.update({entity: 'person', subject: req.body, where: {id: req.params.idperson}}, function(){
+  orm.update({entity: 'person', subject: req.body, where: {id: req.params.idperson}}, function(){
     res.json({code: 0});
   });
 });
 app.delete('/person/:idperson', function(req, res){
-  mapper.delete({entity: 'person', where: {id: req.params.idperson}}, function(){
+  orm.delete({entity: 'person', where: {id: req.params.idperson}}, function(){
     res.json({code: 0});
   });
 });
+orm.connect('dbtest');
+
 app.listen(80);
