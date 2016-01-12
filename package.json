@@ -10,7 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.14.1",
-    "sqlite3_mapper": "^1.0.1",
+    "sqlite3-orm": "^1.0.2",
     "express": "^4.13.3"
   },
   "devDependencies": {},
